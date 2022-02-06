@@ -4,7 +4,7 @@ export const todos = (state = [], action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case CREATE_TODO:
+    case CREATE_TODO: {
       const { text } = payload;
 
       const newTodo = {
@@ -13,12 +13,12 @@ export const todos = (state = [], action) => {
       };
 
       return state.concat(newTodo);
-      break;
-    case REMOVE_TODO:
+    }
+    case REMOVE_TODO: {
       const { text } = payload;
 
       return state.filter((todo) => todo.text !== text);
-      break;
+    }
     default:
       return state;
   }
