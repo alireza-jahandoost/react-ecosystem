@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import { RemoveTodo, CompleteTodo } from "./actions";
 import "./todo-list-item.styles.css";
 
 const TodoListItem = ({ todo, onRemovePressed, onMarkAsCompletePressed }) => {
@@ -30,9 +29,4 @@ const TodoListItem = ({ todo, onRemovePressed, onMarkAsCompletePressed }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onRemovePressed: (text) => dispatch(RemoveTodo(text)),
-  onMarkAsCompletePressed: (text) => dispatch(CompleteTodo(text)),
-});
-
-export default connect(null, mapDispatchToProps)(TodoListItem);
+export default TodoListItem;
