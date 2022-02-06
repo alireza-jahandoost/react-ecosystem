@@ -1,3 +1,4 @@
+import { connect } from "react-redux";
 import TodoListItem from "./todo-list-item.component";
 import NewTodoForm from "./new-todo-form.component";
 import "./todo-list.styles.css";
@@ -11,4 +12,8 @@ const TodoList = ({ todos = [] }) => (
   </div>
 );
 
-export default TodoList;
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+});
+
+export default connect(mapStateToProps)(TodoList);
