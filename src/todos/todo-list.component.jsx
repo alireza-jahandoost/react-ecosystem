@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
 import { CompleteTodo } from "./actions";
 import { loadTodos, removeTodoRequest, completeTodoRequest } from "./thunks";
 import {
@@ -9,7 +10,11 @@ import {
 } from "./selectors.js";
 import TodoListItem from "./todo-list-item.component";
 import NewTodoForm from "./new-todo-form.component";
-import "./todo-list.styles.css";
+
+const ListWrapper = styled.div`
+  max-width: 700px;
+  margin: auto;
+`;
 
 const TodoList = ({
   completedTodos,
@@ -48,10 +53,10 @@ const TodoList = ({
   );
 
   const wrapper = (ui) => (
-    <div className="list-wrapper">
+    <ListWrapper>
       <NewTodoForm />
       {ui}
-    </div>
+    </ListWrapper>
   );
 
   return wrapper(isLoading ? loadingMessage : content);
