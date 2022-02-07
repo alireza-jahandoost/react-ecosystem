@@ -5,13 +5,16 @@ const TodoItemContainer = styled.div`
   background: #fff;
   border-radius: 8px;
   margin-top: 8px;
+  padding: 16px;
+  position: relative;
+  box-shadow: 0 4px 8px grey;
+`;
+
+const TodoItemContainerWithWarning = styled(TodoItemContainer)`
   border-bottom: ${(props) =>
     new Date(props.createdAt) > new Date(Date.now() - 5 * 24 * 60 * 60 * 1000)
       ? "none"
       : "2px solid red"};
-  padding: 16px;
-  position: relative;
-  box-shadow: 0 4px 8px grey;
 `;
 
 const ButtonsContainer = styled.div`
@@ -41,8 +44,11 @@ const RemoveButton = styled(StyledButton)`
 `;
 
 const TodoListItem = ({ todo, onRemovePressed, onMarkAsCompletePressed }) => {
+  const Container = todo.isCompleted
+    ? TodoItemContainer
+    : TodoItemContainerWithWarning;
   return (
-    <TodoItemContainer createdAt={todo.createdAt}>
+    <Container createdAt={todo.createdAt}>
       <h3>{todo.text}</h3>
       <p>{new Date(todo.createdAt).toLocaleDateString()}</p>
       <ButtonsContainer>
@@ -63,7 +69,7 @@ const TodoListItem = ({ todo, onRemovePressed, onMarkAsCompletePressed }) => {
           Remove
         </RemoveButton>
       </ButtonsContainer>
-    </TodoItemContainer>
+    </Container>
   );
 };
 
