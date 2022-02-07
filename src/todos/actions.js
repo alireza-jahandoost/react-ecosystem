@@ -5,9 +5,9 @@ export const CreateTodo = (todo) => ({
 });
 
 export const REMOVE_TODO = "REMOVE_TODO";
-export const RemoveTodo = (text) => ({
+export const RemoveTodo = (todo) => ({
   type: REMOVE_TODO,
-  payload: { text },
+  payload: { todo },
 });
 
 export const COMPLETE_TODO = "COMPLETE_TODO";
